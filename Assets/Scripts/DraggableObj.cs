@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DraggableObj : MonoBehaviour
 {
+    Vector3 _cameraCenter = new Vector3(Screen.width / 2, Screen.height / 2, 0);
     private Vector3 _mousePos;
 
     private Vector3 GetObjectScreenPos()
@@ -11,13 +12,13 @@ public class DraggableObj : MonoBehaviour
         return Camera.main.WorldToScreenPoint(transform.position);
     }
 
-    private void OnMouseDown()
+    public void OnCursorDown()
     {
-        _mousePos = Input.mousePosition - GetObjectScreenPos(); 
+        _mousePos = _cameraCenter - GetObjectScreenPos(); 
     }
 
-    private void OnMouseDrag()
+    public void OnCursorDrag()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - _mousePos);
+        transform.position = Camera.main.ScreenToWorldPoint(_cameraCenter - _mousePos);
     }
 }
