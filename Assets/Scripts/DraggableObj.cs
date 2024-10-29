@@ -13,14 +13,11 @@ public class DraggableObj : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("MouseDown");
         _mousePos = Input.mousePosition - GetObjectScreenPos(); 
     }
 
     private void OnMouseDrag()
     {
-        Debug.Log("MouseDrag");
-        Debug.Log(GetObjectScreenPos());
         transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition - _mousePos);
     }
 }
